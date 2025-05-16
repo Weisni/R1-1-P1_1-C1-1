@@ -17,7 +17,6 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 funclist
-nbproject/Makefile-*
 disassembly/
 *.map
 image/
