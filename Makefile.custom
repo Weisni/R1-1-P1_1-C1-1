@@ -1,0 +1,31 @@
+# Custom Makefile for XC16 project (platform-independent)
+# Auto-generated from MPLAB project structure
+CHIP = 24FJ1024GB610
+CC = xc16-gcc
+CFLAGS = --chip=$(CHIP) -O1 -Wall
+LDFLAGS = --chip=$(CHIP)
+
+# Find all C source files recursively
+SRC := $(wildcard $(addsuffix /*.c, $(shell find . -type d)))
+OBJ := $(SRC:.c=.o)
+
+# Output file
+OUTDIR = build
+TARGET = $(OUTDIR)/firmware
+
+all: $(TARGET).hex
+
+$(TARGET).elf: $(OBJ)
+	@mkdir -p $(OUTDIR)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(TARGET).hex: $(TARGET).elf
+	xc16-bin2hex $<
+
+clean:
+	rm -rf $(OUTDIR) *.hex *.elf *.map *.lst */*.o */*/*.o
+
+.PHONY: all clean

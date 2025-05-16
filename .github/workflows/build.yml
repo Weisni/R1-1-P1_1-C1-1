@@ -1,5 +1,7 @@
 name: Build XC16 Firmware
 
+name: Build XC16 Firmware with Custom Makefile
+
 on:
   push:
     branches: [ master ]
@@ -13,24 +15,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y wget unzip
-
     - name: Download XC16 v2.10 Installer
       run: |
-        wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.1/xc16-v2.10.run
+        wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/v2.10/xc16-v2.10.run
         chmod +x xc16-v2.10.run
         ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost || true
         echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
 
-    - name: Build MPLABX Project
+    - name: Build firmware using custom Makefile
       run: |
-        make CONF=Release
+        make -f Makefile.custom
 
     - name: Upload HEX file
       uses: actions/upload-artifact@v4
       with:
         name: firmware
-        path: dist/Release/production/*.hex
+        path: build/firmware.hex
