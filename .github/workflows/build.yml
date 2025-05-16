@@ -10,6 +10,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Install GNU Make
+        run: choco install make -y
+        shell: powershell
+
       - name: Checkout code
         uses: actions/checkout@v4
 
