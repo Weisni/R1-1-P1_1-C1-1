@@ -24,7 +24,7 @@ jobs:
           7z x xc16.zip -oxc16
         shell: powershell
 
-      - name: Debug: Verify xc16-gcc location
+      - name: Debug - Verify xc16-gcc location
         run: |
           $pathToXC16 = Join-Path $pwd 'xc16\v2.10\bin'
           $env:Path = "$pathToXC16;$env:Path"
