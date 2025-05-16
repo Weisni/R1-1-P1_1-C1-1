@@ -20,7 +20,7 @@ jobs:
 
       - name: Build firmware using custom Makefile
         run: |
-          PATH="${{ github.workspace }}/2.10/bin:$PATH" make -f Makefile.custom
+          PATH="${{ github.workspace }}/xc16/v2.10/bin:$PATH" make -f Makefile.custom
 
       - name: Upload HEX file
         uses: actions/upload-artifact@v4
