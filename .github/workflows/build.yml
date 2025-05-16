@@ -16,11 +16,11 @@ jobs:
       - name: Download and extract XC16 v2.10
         run: |
           wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.2/xc16-v2.10-bin.zip
-          unzip xc16-v2.10-bin.zip -d /opt/microchip/xc16
+          unzip xc16-v2.10-bin.zip -d xc16
 
       - name: Build firmware using custom Makefile
         run: |
-          PATH="/opt/microchip/xc16/v2.10/bin:$PATH" make -f Makefile.custom
+          PATH="${{ github.workspace }}/xc16/v2.10/bin:$PATH" make -f Makefile.custom
 
       - name: Upload HEX file
         uses: actions/upload-artifact@v4
