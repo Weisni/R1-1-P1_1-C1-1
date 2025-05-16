@@ -1,5 +1,3 @@
-name: Build XC16 Firmware
-
 name: Build XC16 Firmware with Custom Makefile
 
 on:
@@ -12,22 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Download XC16 v2.10 Installer
-      run: |
-        wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/v2.10/xc16-v2.10.run
-        chmod +x xc16-v2.10.run
-        ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost || true
-        echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
+      - name: Download XC16 v2.10 Installer
+        run: |
+          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/v2.10/xc16-v2.10.run
+          chmod +x xc16-v2.10.run
+          ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost || true
+          echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
 
-    - name: Build firmware using custom Makefile
-      run: |
-        make -f Makefile.custom
+      - name: Build firmware using custom Makefile
+        run: |
+          make -f Makefile.custom
 
-    - name: Upload HEX file
-      uses: actions/upload-artifact@v4
-      with:
-        name: firmware
-        path: build/firmware.hex
+      - name: Upload HEX file
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: build/firmware.hex
