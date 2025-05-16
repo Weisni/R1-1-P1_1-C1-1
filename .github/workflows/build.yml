@@ -3,8 +3,7 @@ name: Build XC16 Firmware
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,9 +11,9 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/upload-artifact@v4
+      uses: actions/checkout@v4
 
-    - name: Install required tools
+    - name: Install dependencies
       run: |
         sudo apt update
         sudo apt install -y wget unzip
