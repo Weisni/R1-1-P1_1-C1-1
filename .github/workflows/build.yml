@@ -26,14 +26,16 @@ jobs:
 
       - name: Debug: Verify xc16-gcc location
         run: |
-          $env:Path = "$pwd\xc16\v2.10\bin;" + $env:Path
+          $pathToXC16 = Join-Path $pwd "xc16\v2.10\bin"
+          $env:Path = "$pathToXC16;$env:Path"
           where xc16-gcc
           xc16-gcc --version
         shell: powershell
 
       - name: Build firmware using custom Makefile
         run: |
-          $env:Path = "$pwd\xc16\v2.10\bin;" + $env:Path
+          $pathToXC16 = Join-Path $pwd "xc16\v2.10\bin"
+          $env:Path = "$pathToXC16;$env:Path"
           make -f Makefile.custom
         shell: powershell
 
