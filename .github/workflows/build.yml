@@ -17,7 +17,7 @@ jobs:
         run: |
           wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.1/xc16-v2.10.run
           chmod +x xc16-v2.10.run
-          ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost || true
+          sudo ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost
 
       - name: Build firmware using custom Makefile
         run: |
