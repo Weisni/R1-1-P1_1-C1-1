@@ -10,3 +10,6 @@
 	path = GitVersion
 	url = https://github.com/K-G-Tectronic-GmbH/GitVersion.git
 	branch = main
+[submodule "UART_ID"]
+	path = UART_ID
+	url = https://github.com/K-G-Tectronic-GmbH/UART_ID.git

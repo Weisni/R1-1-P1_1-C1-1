@@ -1,0 +1,37 @@
+name: Build XC16 Firmware
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install required tools
+      run: |
+        sudo apt update
+        sudo apt install -y wget unzip
+
+    - name: Install Microchip XC16 Compiler
+      run: |
+        wget https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc16-v2.10-full-install-linux64-installer.run
+        chmod +x xc16-v2.10-full-install-linux64-installer.run
+        ./xc16-v2.10-full-install-linux64-installer.run --mode unattended --prefix /opt/microchip/xc16
+        echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
+
+    - name: Build MPLABX Project
+      run: |
+        make CONF=Release
+
+    - name: Upload HEX file
+      uses: actions/upload-artifact@v3
+      with:
+        name: firmware
+        path: dist/Release/production/*.hex
