@@ -26,7 +26,7 @@ jobs:
 
       - name: Debug: Verify xc16-gcc location
         run: |
-          $pathToXC16 = Join-Path $pwd "xc16\v2.10\bin"
+          $pathToXC16 = Join-Path $pwd 'xc16\v2.10\bin'
           $env:Path = "$pathToXC16;$env:Path"
           where xc16-gcc
           xc16-gcc --version
@@ -34,7 +34,7 @@ jobs:
 
       - name: Build firmware using custom Makefile
         run: |
-          $pathToXC16 = Join-Path $pwd "xc16\v2.10\bin"
+          $pathToXC16 = Join-Path $pwd 'xc16\v2.10\bin'
           $env:Path = "$pathToXC16;$env:Path"
           make -f Makefile.custom
         shell: powershell
@@ -42,5 +42,3 @@ jobs:
       - name: Upload HEX file
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
-          path: build/firmware.hex
