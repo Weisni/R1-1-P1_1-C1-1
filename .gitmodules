@@ -1,10 +1,10 @@
 [submodule "KG-Lib"]
 	path = KG-Lib
-url=https://github.com/K-G-Tectronic-GmbH/KG-Lib.git
+	url = https://github.com/K-G-Tectronic-GmbH/KG-Lib.git
 	branch = develop
 [submodule "KG-Bootloader"]
 	path = KG-Bootloader
-url=https://github.com/K-G-Tectronic-GmbH/KG-Bootloader.git
+	url = https://github.com/K-G-Tectronic-GmbH/KG-Bootloader.git
 	branch = develop
 [submodule "GitVersion"]
 	path = GitVersion
