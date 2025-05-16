@@ -18,15 +18,12 @@ jobs:
         sudo apt update
         sudo apt install -y wget unzip
 
-    - name: Install Microchip XC16 Compiler
+    - name: Install Microchip XC16 Compiler v1.70
       run: |
-        wget https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/SoftwareTools/xc16-v2.10-full-install-linux64-installer.run
-        chmod +x xc16-v2.10-full-install-linux64-installer.run
-        ./xc16-v2.10-full-install-linux64-installer.run \
-          --mode unattended \
-          --prefix /opt/microchip/xc16 \
-          --license=Free
-        echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
+        wget https://ww1.microchip.com/downloads/en/DeviceDoc/xc16-v1.70-full-install-linux-installer.run
+        chmod +x xc16-v1.70-full-install-linux-installer.run
+        ./xc16-v1.70-full-install-linux-installer.run --mode unattended --prefix /opt/microchip/xc16
+        echo "/opt/microchip/xc16/v1.70/bin" >> $GITHUB_PATH
 
     - name: Build MPLABX Project
       run: |
