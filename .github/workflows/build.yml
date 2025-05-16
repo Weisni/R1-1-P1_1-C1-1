@@ -10,17 +10,18 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Install GNU Make
-        run: choco install make -y
-        shell: powershell
-
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Install 7-Zip and GNU Make
+        run: |
+          choco install 7zip make -y
+        shell: powershell
 
       - name: Download and extract XC16 v2.10
         run: |
           Invoke-WebRequest -Uri "https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.2/xc16-v2.10-bin.zip" -OutFile "xc16.zip"
-          Expand-Archive xc16.zip -DestinationPath "xc16"
+          7z x xc16.zip -oxc16
         shell: powershell
 
       - name: Build firmware using custom Makefile
