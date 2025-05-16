@@ -15,7 +15,7 @@ jobs:
 
       - name: Download XC16 v2.10 Installer
         run: |
-          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/v2.10/xc16-v2.10.run
+          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.1/xc16-v2.10.run
           chmod +x xc16-v2.10.run
           ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost || true
           echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
