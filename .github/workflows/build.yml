@@ -1,4 +1,4 @@
-name: Build XC16 Firmware with Custom Makefile
+name: Build XC16 Firmware with Preinstalled Compiler
 
 on:
   push:
@@ -13,11 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download and install XC16 v2.10
+      - name: Download and extract XC16 v2.10
         run: |
-          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.1/xc16-v2.10.run
-          chmod +x xc16-v2.10.run
-          sudo ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost
+          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.2/xc16-v2.10-bin.zip
+          unzip xc16-v2.10-bin.zip -d /opt/microchip/xc16
 
       - name: Build firmware using custom Makefile
         run: |
