@@ -13,15 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download XC16 v2.10 Installer
+      - name: Download and install XC16 v2.10
         run: |
           wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.1/xc16-v2.10.run
           chmod +x xc16-v2.10.run
           ./xc16-v2.10.run --mode unattended --prefix /opt/microchip/xc16 --netservername localhost || true
-          echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
 
       - name: Build firmware using custom Makefile
         run: |
+          export PATH="/opt/microchip/xc16/v2.10/bin:$PATH"
           make -f Makefile.custom
 
       - name: Upload HEX file
