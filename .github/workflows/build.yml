@@ -15,8 +15,8 @@ jobs:
 
       - name: Download and extract XC16 v2.10
         run: |
-          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.2/xc16-v2.10.zip
-          unzip xc16-2.10.zip -d .
+          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.2/xc16-v2.10-bin.zip
+          unzip xc16-v2.10-bin.zip -d xc16
 
       - name: Build firmware using custom Makefile
         run: |
