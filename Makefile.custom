@@ -1,8 +1,8 @@
 # Windows-kompatibles Custom Makefile für XC16 (mit festen Flags)
 
 CC = xc16-gcc
-CFLAGS = --chip=24FJ1024GB610 -O1 -Wall
-LDFLAGS = --chip=24FJ1024GB610
+CFLAGS = -mcpu=24FJ1024GB610 -O1 -Wall
+LDFLAGS = -mcpu=24FJ1024GB610
 
 SRC = LibConfig.c BoardSupport/Device.c main.c
 OBJ = LibConfig.o BoardSupport/Device.o main.o
