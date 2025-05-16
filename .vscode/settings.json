@@ -1,0 +1,82 @@
+{
+    "files.associations": {
+        "*.nc": "c",
+        "vent_button.h": "c",
+        "kg-include.h": "c",
+        "stdbool.h": "c",
+        "libconfig.h": "c",
+        "stdio.h": "c",
+        "ctype.h": "c",
+        "xc.h": "c",
+        "p24fj256ga705.h": "c",
+        "builtins.h": "c",
+        "pwm.h": "c",
+        "stdint.h": "c",
+        "alltypes.h": "c",
+        "pk.h": "c",
+        "p24fj48ga004.h": "c",
+        "stdlib.h": "c",
+        "esp.h": "c",
+        "flash_16bit-v1-1-1.h": "c",
+        "system.h": "c",
+        "analog_16bit-v1-1-1.h": "c",
+        "uart.h": "c",
+        "dma.h": "c",
+        "libpic30.h": "c",
+        "mainmenu.h": "c",
+        "kg-lib.h": "c",
+        "charge.h": "c",
+        "system_rwz.h": "c",
+        "pin_config_pic24fj1024gb610.h": "c",
+        "pins.h": "c",
+        "conversion_16bit-v1-1-1.h": "c",
+        "pic24fj1024gb610.h": "c",
+        "pic24fj256ga705.h": "c",
+        "o41_menu.h": "c",
+        "pca9554.h": "c",
+        "mcp.h": "c",
+        "main.h": "c",
+        "options.h": "c",
+        "timer1.h": "c",
+        "vds_mainmenu.h": "c",
+        "rwz_menu_maintanance.h": "c",
+        "maintanance.h": "c",
+        "o11_menu.h": "c",
+        "o01_menu.h": "c",
+        "tla202x.h": "c",
+        "bootloader.h": "c",
+        "gitversion.h": "c",
+        "p24fj1024gb610.h": "c",
+        "ios": "c"
+    },
+    "files.exclude": {
+        "out": false // set this to true to hide the "out" folder with the compiled JS files
+    },
+    "search.exclude": {
+        "out": true // set this to false to include "out" folder in search results
+    },
+    // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
+    "typescript.tsc.autoDetect": "off",
+    // Project specific spelling
+    "cSpell.words": [
+        "ipecmd",
+        "mplab",
+        "mplabx",
+        "mpmake",
+        "vslabx"
+    ],
+    "lldb.displayFormat": "auto",
+    "lldb.showDisassembly": "auto",
+    "lldb.dereferencePointers": true,
+    "lldb.consoleMode": "evaluate",
+    "C_Cpp.errorSquiggles": "enabledIfIncludesResolve",
+    "files.autoSave": "onFocusChange",
+    "clangd.arguments": [
+        "--compile-commands-dir=d:\\GitHub\\R1-1-P1_1-C1-1\\_build_mplab\\Bootloader\\DebugConfig_PIC24FJ1024GB610\\image_DebugConfig_PIC24FJ1024GB610.elf"
+    ],
+    "mplab.clangd.arguments": [
+        "--compile-commands-dir=d:\\GitHub\\R1-1-P1_1-C1-1\\_build\\Bootloader\\default"
+    ],
+    "mplab.clangd.path": "",
+    "C_Cpp.default.compilerPath": "cl.exe"
+}

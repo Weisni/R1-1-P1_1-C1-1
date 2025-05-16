@@ -1,0 +1,115 @@
+{
+    "configurations": [
+        {
+            "name": "PIC24",
+            "includePath": [
+                "d:/GitHub/R1-1-P1_1-C1-1\\**",
+                "C:/Program Files/Microchip/xc16/v2.00/include\\**",
+                "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC24F-GA-GB_DFP\\**",
+                "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC24F-GA-GB_DFP/1.5.181/xc16/support/PIC24F/h"
+            ],
+            "defines": [
+                "DEBUG",
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "__PIC24FJ256GA705__"
+            ],
+            "cStandard": "c99",
+            "cppStandard": "c++98",
+            "intelliSenseMode": "gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "compilerPath": "C:/Program Files/Microchip/xc16/v2.00/bin/xc16-gcc.exe",
+            "mergeConfigurations": false,
+            "browse": {
+                "path": [
+                    "d:/GitHub/R1-1-P1_1-C1\\**",
+                    "C:/Program Files/Microchip/xc16/v2.00/include\\**",
+                    "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC24F-GA-GB_DFP\\**",
+                    "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC24F-GA-GB_DFP/1.5.181/xc16/support/PIC24F/h"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "compilerPathInCppPropertiesJson": "C:/Program Files/Microchip/xc16/v2.00/bin/xc16-gcc.exe",
+            "configurationProviderInCppPropertiesJson": "ms-vscode.makefile-tools",
+            "compileCommands": ""
+        },
+        {
+            "name": "DEBUG",
+            "includePath": [
+                "${workspaceFolder}\\**",
+                "C:\\Program Files\\Microchip\\xc16\\v2.00\\include\\**",
+                "C:\\Program Files\\Microchip\\MPLABX\\v6.00\\packs\\Microchip\\PIC24F-GA-GB_DFP\\**",
+                "C:\\Program Files\\Microchip\\MPLABX\\v6.00\\packs\\Microchip\\PIC24F-GA-GB_DFP\\1.5.181\\xc16\\support\\PIC24F\\h"
+            ],
+            "defines": [
+                "DEBUG",
+                "_DEBUG_",
+                "__DEBUG__",
+                "UNICODE",
+                "_UNICODE",
+                "__PIC24FJ256GA705__"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "mergeConfigurations": false,
+            "compilerPath": "C:\\Program Files\\Microchip\\xc16\\v2.00\\bin\\xc16-gcc.exe",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "cStandard": "c99",
+            "cppStandard": "c++98"
+        },
+        {
+            "name": "MPLAB X",
+            "compilerPath": "C:/Program Files/Microchip/xc16/v2.00/bin/xc16-gcc.exe",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Program Files/Microchip/xc16/v2.00/support/PIC24F/h",
+                "C:/Program Files/Microchip/xc16/v2.00/include/**",
+                "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC24F-GA-GB_DFP/**",
+                "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC24F-GA-GB_DFP/1.5.181/xc16/support/PIC24F/h"
+            ],
+            "defines": [
+                "_DEBUG",
+                "__XC16",
+                "UNICODE",
+                "_UNICODE",
+                "__PIC24FJ256GA705__"
+            ],
+            "intelliSenseMode": "gcc-x64"
+        },
+        {
+            "name": "DEBUG_24FJ1024GB610",
+            "includePath": [
+                "${workspaceFolder}\\**",
+                "${workspaceFolder}\\..\\**",
+                "C:\\Program Files\\Microchip\\xc16\\v2.10\\include\\**",
+                "C:\\Program Files\\Microchip\\MPLABX\\v6.20\\packs\\Microchip\\PIC24F-GA-GB_DFP\\**",
+                "C:\\Program Files\\Microchip\\MPLABX\\v6.20\\packs\\Microchip\\PIC24F-GA-GB_DFP\\1.9.336\\xc16\\support\\PIC24F\\h"
+            ],
+            "defines": [
+                "DEBUG",
+                "_DEBUG_",
+                "__DEBUG__",
+                "UNICODE",
+                "_UNICODE",
+                "__PIC24FJ1024GB610__"
+            ],
+            "intelliSenseMode": "gcc-x64",
+            "mergeConfigurations": false,
+            "compilerPath": "cl.exe",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "cStandard": "c99",
+            "cppStandard": "c++98"
+        }
+    ],
+    "version": 4
+}
