@@ -25,7 +25,7 @@ jobs:
         ./xc16-v2.10-full-install-linux64-installer.run \
           --mode unattended \
           --prefix /opt/microchip/xc16 \
-          --license Free
+          --license=Free
         echo "/opt/microchip/xc16/v2.10/bin" >> $GITHUB_PATH
 
     - name: Build MPLABX Project
