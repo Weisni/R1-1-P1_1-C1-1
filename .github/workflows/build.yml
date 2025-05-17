@@ -6,16 +6,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  # 🐧 Vorbereitung auf Linux (Entpacken der Toolchain)
   prepare:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository with submodules
+      - name: Checkout repository with submodules (using PAT)
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SUBMODULE_PAT }}
 
       - name: Download and extract XC16 toolchain
         run: |
@@ -28,17 +27,16 @@ jobs:
           name: xc16-toolchain
           path: xc16
 
-  # 🪟 Windows Build mit PowerShell-Skripten aus Submodul
   build:
     runs-on: windows-latest
     needs: prepare
 
     steps:
-      - name: Checkout repository with submodules
+      - name: Checkout repository with submodules (using PAT)
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SUBMODULE_PAT }}
 
       - name: Download XC16 toolchain
         uses: actions/download-artifact@v4
@@ -48,18 +46,18 @@ jobs:
 
       - name: Run GitVersion prebuild
         run: |
-          powershell -ExecutionPolicy Bypass -File "$pwd\GitVersion\GitVersion.ps1"
+          powershell -ExecutionPolicy Bypass -File "$pwd\\GitVersion\\GitVersion.ps1"
         shell: powershell
 
       - name: Build firmware
         run: |
-          $env:Path = "$pwd\xc16\v2.10\bin;$env:Path"
+          $env:Path = "$pwd\\xc16\\v2.10\\bin;$env:Path"
           make -f Makefile.custom
         shell: powershell
 
       - name: Run CopyHexfile postbuild
         run: |
-          powershell -ExecutionPolicy Bypass -File "$pwd\GitVersion\CopyHexfile.ps1"
+          powershell -ExecutionPolicy Bypass -File "$pwd\\GitVersion\\CopyHexfile.ps1"
         shell: powershell
 
       - name: Upload versioned HEX files
