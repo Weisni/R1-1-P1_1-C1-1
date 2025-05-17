@@ -1,16 +1,20 @@
+name: Build XC16 Firmware with submodules
+
 on:
   push:
     branches: [ master ]
   workflow_dispatch:
 
 jobs:
-  # 🐧 Job 1: Toolchain vorbereiten (Linux)
+  # 🐧 Vorbereitung auf Linux (Entpacken der Toolchain)
   prepare:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository with submodules
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Download and extract XC16 toolchain
         run: |
@@ -23,33 +27,40 @@ jobs:
           name: xc16-toolchain
           path: xc16
 
-  # 🪟 Job 2: Build Firmware (Windows)
+  # 🪟 Windows Build mit PowerShell-Skripten aus Submodul
   build:
     runs-on: windows-latest
-    needs: prepare  # ⬅️ wartet auf "prepare"-Job
+    needs: prepare
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository with submodules
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-      - name: Download toolchain from prepare job
+      - name: Download XC16 toolchain
         uses: actions/download-artifact@v4
         with:
           name: xc16-toolchain
-          path: xc16
+          path: ${{ github.workspace }}/xc16
 
-      - name: Install GNU Make
+      - name: Run GitVersion prebuild
         run: |
-          choco install make -y
+          powershell -ExecutionPolicy Bypass -File "$pwd\GitVersion\GitVersion.ps1"
         shell: powershell
 
-      - name: Set PATH and build firmware
+      - name: Build firmware
         run: |
           $env:Path = "$pwd\xc16\v2.10\bin;$env:Path"
           make -f Makefile.custom
         shell: powershell
 
-      - name: Upload all HEX outputs
+      - name: Run CopyHexfile postbuild
+        run: |
+          powershell -ExecutionPolicy Bypass -File "$pwd\GitVersion\CopyHexfile.ps1"
+        shell: powershell
+
+      - name: Upload versioned HEX files
         uses: actions/upload-artifact@v4
         with:
           name: firmware
