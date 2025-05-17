@@ -1,46 +1,64 @@
-name: Build XC16 Firmware on Windows
-
 on:
   push:
     branches: [ master ]
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
+  # 🐧 Job 1: Toolchain vorbereiten (Linux)
+  prepare:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install 7-Zip and GNU Make
+      - name: Download and extract XC16 toolchain
         run: |
-          choco install 7zip make -y
+          wget https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.2/xc16-v2.10-bin.zip
+          unzip xc16-v2.10-bin.zip -d xc16
+
+      - name: Upload extracted toolchain
+        uses: actions/upload-artifact@v4
+        with:
+          name: xc16-toolchain
+          path: xc16
+
+  # 🪟 Job 2: Build Firmware (Windows)
+  build:
+    runs-on: windows-latest
+    needs: prepare  # ⬅️ wartet auf "prepare"-Job
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download toolchain from prepare job
+        uses: actions/download-artifact@v4
+        with:
+          name: xc16-toolchain
+          path: xc16
+
+      - name: Install GNU Make
+        run: |
+          choco install make -y
         shell: powershell
 
-      - name: Download and extract XC16 v2.10
-        run: |
-          Invoke-WebRequest -Uri "https://github.com/Weisni/R1-1-P1_1-C1-1/releases/download/1.2/xc16-v2.10-bin.zip" -OutFile "xc16.zip"
-          7z x xc16.zip -oxc16
+      - name: Run GitVersion prebuild
+        run: .\GitVersion\GitVersion.ps1
         shell: powershell
 
-      - name: Debug - Verify xc16-gcc location
+      - name: Set PATH and build firmware
         run: |
-          $pathToXC16 = Join-Path $pwd 'xc16\v2.10\bin'
-          $env:Path = "$pathToXC16;$env:Path"
-          where xc16-gcc
-          xc16-gcc --version
-        shell: powershell
-
-      - name: Build firmware using custom Makefile
-        run: |
-          $pathToXC16 = Join-Path $pwd 'xc16\v2.10\bin'
-          $env:Path = "$pathToXC16;$env:Path"
+          $env:Path = "$pwd\xc16\v2.10\bin;$env:Path"
           make -f Makefile.custom
         shell: powershell
 
-      - name: Upload HEX file
+      - name: Run CopyHexfile postbuild
+        run: .\GitVersion\CopyHexfile.ps1
+        shell: powershell
+
+      - name: Upload all HEX outputs
         uses: actions/upload-artifact@v4
         with:
           name: firmware
-          path: build/firmware.hex
+          path: Hex/**
