@@ -1,11 +1,11 @@
 [submodule "KG-Lib"]
 	path = KG-Lib
 	url = https://github.com/K-G-Tectronic-GmbH/KG-Lib.git
-	branch = develop
+	branch = BuildServer
 [submodule "KG-Bootloader"]
 	path = KG-Bootloader
 	url = https://github.com/K-G-Tectronic-GmbH/KG-Bootloader.git
-	branch = develop
+	branch = BuildServer
 [submodule "GitVersion"]
 	path = GitVersion
 	url = https://github.com/K-G-Tectronic-GmbH/GitVersion.git
@@ -13,3 +13,4 @@
 [submodule "UART_ID"]
 	path = UART_ID
 	url = https://github.com/K-G-Tectronic-GmbH/UART_ID.git
+	branch = BuildServer
