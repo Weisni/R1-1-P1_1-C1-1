@@ -44,20 +44,10 @@ jobs:
           name: xc16-toolchain
           path: ${{ github.workspace }}/xc16
 
-      - name: Run GitVersion prebuild
-        run: |
-          powershell -ExecutionPolicy Bypass -File "$pwd\\GitVersion\\GitVersion.ps1"
-        shell: powershell
-
       - name: Build firmware
         run: |
           $env:Path = "$pwd\\xc16\\v2.10\\bin;$env:Path"
           make -f Makefile.custom
-        shell: powershell
-
-      - name: Run CopyHexfile postbuild
-        run: |
-          powershell -ExecutionPolicy Bypass -File "$pwd\\GitVersion\\CopyHexfile.ps1"
         shell: powershell
 
       - name: Upload versioned HEX files
