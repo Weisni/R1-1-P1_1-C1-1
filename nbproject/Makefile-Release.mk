@@ -102,8 +102,8 @@ ifneq ($(INFORMATION_MESSAGE), )
 endif
 	${MAKE}  -f nbproject/Makefile-Release.mk ${DISTDIR}/R1-1-P1_1-C1-1.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 	@echo "--------------------------------------"
-	@echo "User defined post-build step: [Cpowershell -ExecutionPolicy Bypass -File ${ProjectDir}\GitVersion\CopyHexfile.ps1 ${ImagePath} ${ProjectDir}]"
-	@powershell -ExecutionPolicy Bypass -File ${ProjectDir}\GitVersion\CopyHexfile.ps1 ${ImagePath} ${ProjectDir}
+	@echo "User defined post-build step: [PowerShell -ExecutionPolicy Bypass -File ${ProjectDir}\GitVersion\CopyHexfile.ps1 ${ImagePath} ${ProjectDir}]"
+	@PowerShell -ExecutionPolicy Bypass -File ${ProjectDir}\GitVersion\CopyHexfile.ps1 ${ImagePath} ${ProjectDir}
 	@echo "--------------------------------------"
 
 MP_PROCESSOR_OPTION=24FJ1024GB610
@@ -170,8 +170,8 @@ endif
 
 .pre:
 	@echo "--------------------------------------"
-	@echo "User defined pre-build step: [powershell -ExecutionPolicy Bypass -File ${ProjectDir}\GitVersion\GitVersion.ps1 ${ProjectDir}]"
-	@powershell -ExecutionPolicy Bypass -File  ${ProjectDir}\GitVersion\GitVersion.ps1 ${ProjectDir}
+	@echo "User defined pre-build step: [PowerShell -ExecutionPolicy Bypass -File ${ProjectDir}\GitVersion\GitVersion.ps1 ${ProjectDir}]"
+	@PowerShell -ExecutionPolicy Bypass -File  ${ProjectDir}\GitVersion\GitVersion.ps1 ${ProjectDir}
 	@echo "--------------------------------------"
 
 # Subprojects
