@@ -173,7 +173,7 @@ endif
 .pre:
 	@echo "--------------------------------------"
 	@echo "User defined pre-build step: [PowerShell -ExecutionPolicy Bypass -File ${CURDIR}\GitVersion\GitVersion.ps1 ${CURDIR}]"
-	PowerShell -ExecutionPolicy Bypass -File  ${CURDIR}\GitVersion\GitVersion.ps1 ${CURDIR}
+	PowerShell -ExecutionPolicy Bypass -File ${CURDIR}\GitVersion\GitVersion.ps1 ${CURDIR}
 	@echo "--------------------------------------"
 
 # Subprojects
