@@ -44,10 +44,10 @@ jobs:
           name: xc16-toolchain
           path: ${{ github.workspace }}/xc16
 
-      - name: Build firmware
+      - name: Build via MPLABX Makefile
         run: |
           $env:Path = "$pwd\\xc16\\v2.10\\bin;$env:Path"
-          make -f Makefile.custom
+          make CONF=Release
         shell: powershell
 
       - name: Upload versioned HEX files
