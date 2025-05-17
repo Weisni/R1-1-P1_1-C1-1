@@ -43,18 +43,10 @@ jobs:
           choco install make -y
         shell: powershell
 
-      - name: Run GitVersion prebuild
-        run: .\GitVersion\GitVersion.ps1
-        shell: powershell
-
       - name: Set PATH and build firmware
         run: |
           $env:Path = "$pwd\xc16\v2.10\bin;$env:Path"
           make -f Makefile.custom
-        shell: powershell
-
-      - name: Run CopyHexfile postbuild
-        run: .\GitVersion\CopyHexfile.ps1
         shell: powershell
 
       - name: Upload all HEX outputs
