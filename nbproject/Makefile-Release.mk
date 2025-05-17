@@ -24,6 +24,8 @@ RM=rm -f
 MV=mv 
 CP=cp 
 
+HEX_OUTPUT_PATH=$(DISTDIR)/$(TARGET).hex
+
 # Macros
 CND_CONF=Release
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
@@ -102,8 +104,8 @@ ifneq ($(INFORMATION_MESSAGE), )
 endif
 	${MAKE}  -f nbproject/Makefile-Release.mk ${DISTDIR}/R1-1-P1_1-C1-1.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 	@echo "--------------------------------------"
-	@echo "User defined post-build step: [PowerShell -ExecutionPolicy Bypass -File ${CURDIR}\GitVersion\CopyHexfile.ps1 ${ImagePath} ${CURDIR}]"
-	PowerShell -ExecutionPolicy Bypass -File ${CURDIR}\GitVersion\CopyHexfile.ps1 ${ImagePath} ${CURDIR}
+	@echo "User defined post-build step: [PowerShell -ExecutionPolicy Bypass -File ${CURDIR}\GitVersion\CopyHexfile.ps1 ${HEX_OUTPUT_PATH} ${CURDIR}]"
+	PowerShell -ExecutionPolicy Bypass -File ${CURDIR}\GitVersion\CopyHexfile.ps1 ${HEX_OUTPUT_PATH} ${CURDIR}
 	@echo "--------------------------------------"
 
 MP_PROCESSOR_OPTION=24FJ1024GB610
