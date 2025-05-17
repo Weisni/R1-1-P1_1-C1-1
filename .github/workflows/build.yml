@@ -44,6 +44,13 @@ jobs:
           name: xc16-toolchain
           path: ${{ github.workspace }}/xc16
 
+      - name: Show Git tags
+        run: |
+          git tag --sort=-creatordate
+          git describe --tags
+          git log -1
+        shell: bash
+
       - name: Build via MPLABX Makefile
         run: |
           $env:Path = "$pwd\\xc16\\v2.10\\bin;$env:Path"
